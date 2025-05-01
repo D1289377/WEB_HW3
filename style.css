@@ -126,11 +126,12 @@ ul {
     color: #ccc;
 }
 
+/* 錯誤訊息一開始不顯示 */
 .error-message {
-    color: #ee4d2d;
-    font-size: 0.9rem;
     display: none;
-    margin-top: 5px;
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
 }
 
 
