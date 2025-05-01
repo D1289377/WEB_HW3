@@ -112,11 +112,10 @@ ul {
 }
 
 .login-input {
+    padding: 10px;
+    padding-right: 40px; /* 留出空間給圖片 */
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
+    box-sizing: border-box;
 }
 
 .login-input:invalid {
@@ -128,12 +127,12 @@ ul {
 }
 
 .error-message {
-    position: absolute;
-    bottom: -20px; /* 錯誤訊息顯示在框框下方 */
-    left: 0;
-    color: red;
-    font-size: 12px;
+    color: #ee4d2d;
+    font-size: 0.9rem;
+    display: none;
+    margin-top: 5px;
 }
+
 
 .login-input:invalid + .error-message,
 .login-input:invalid ~ .error-message {
@@ -142,6 +141,7 @@ ul {
 
 .password-group {
     position: relative;
+    height: 40px;
 }
 
 .password-toggle {
@@ -149,11 +149,10 @@ ul {
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     cursor: pointer;
-    object-fit: cover;
-    z-index: 1; /* 確保圖片在錯誤訊息上方 */
+    z-index: 1;
 }
 
 .login-button {
@@ -282,6 +281,15 @@ ul {
 
 .footer-column {
     flex: 1;
+}
+
+.footer-column:first-child,
+.footer-column:nth-child(2) {
+    margin-left: 100px; /* 將整體往右移動 */
+}
+
+.footer-column:nth-child(2) {
+    margin-left: 80px; /* 將整體往左移動，減少左側外邊距 */
 }
 
 .footer-title {

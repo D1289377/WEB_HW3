@@ -4,8 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>警告</title>
+  <style>
+    body {
+      background-color: #ee4d2d; /* 設定背景色為橘色 */
+      color: #fff; /* 設定文字顏色為白色 */
+      font-family: Arial, sans-serif; /* 確保文字樣式一致 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* 讓內容垂直居中 */
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 36px; /* 調整文字大小 */
+      text-align: center; /* 文字置中 */
+    }
+
+    .phishing-image {
+      position: fixed;
+      bottom: 10px; /* 距離底部10px */
+      right: 25px; /* 距離右側10px */
+      width: 500px; /* 設定圖片寬度 */
+      height: auto; /* 自動調整高度 */
+    }
+  </style>
 </head>
 <body>
-<h1 style="color: red; text-align: center;">您的帳密已被竊取</h1>
+<h1>您的帳號密碼已被竊取</h1>
+<img src="img/釣魚.png" alt="釣魚警告" class="phishing-image">
 </body>
 </html>
