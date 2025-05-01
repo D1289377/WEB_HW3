@@ -57,3 +57,16 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
 })
+
+const passwordInput = document.getElementById('password-input');
+const passwordToggle = document.getElementById('password-toggle');
+
+passwordToggle.addEventListener('click', () => {
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        passwordToggle.src = 'img/睜眼.jpg'; // 切換為睜眼圖片
+    } else {
+        passwordInput.type = 'password';
+        passwordToggle.src = 'img/閉眼.jpg'; // 切換為閉眼圖片
+    }
+});

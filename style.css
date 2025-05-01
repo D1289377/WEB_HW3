@@ -103,10 +103,11 @@ ul {
     font-size: 20px;
     margin-bottom: 20px;
     color: #333;
+    font-weight: 310;
 }
 
 .input-group {
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     position: relative;
 }
 
@@ -127,10 +128,11 @@ ul {
 }
 
 .error-message {
-    color: #ee4d2d;
+    position: absolute;
+    bottom: -20px; /* 錯誤訊息顯示在框框下方 */
+    left: 0;
+    color: red;
     font-size: 12px;
-    margin-top: 5px;
-    display: none;
 }
 
 .login-input:invalid + .error-message,
@@ -149,9 +151,9 @@ ul {
     transform: translateY(-50%);
     width: 20px;
     height: 20px;
-    background-image: url("/placeholder.svg?height=20&width=20");
-    background-size: contain;
     cursor: pointer;
+    object-fit: cover;
+    z-index: 1; /* 確保圖片在錯誤訊息上方 */
 }
 
 .login-button {
