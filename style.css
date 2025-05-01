@@ -6,63 +6,155 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #fff;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.5;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* 頁首樣式 */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
+    padding: 10px 40px;
+    background-color: #fff;
     border-bottom: 1px solid #eee;
 }
 
-.logo {
-    height: 30px;
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    color: #ee4d2d;
+}
+
+.logo-icon {
+    height: 40px;
+    width: auto;
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 8px;
+    color: #ee4d2d;
+}
+
+.login-text {
+    margin-left: 15px;
+    font-size: 18px;
+    color: #333;
 }
 
 .help-link {
     font-size: 14px;
     color: #ee4d2d;
-    text-decoration: none;
 }
 
+/* 主要內容樣式 */
 .main {
     display: flex;
-    min-height: calc(100vh - 80px);
     justify-content: center;
     align-items: center;
     padding: 40px;
+    background-color: #ee4d2d; /* 橘色背景 */
+    height: auto; /* 自動調整高度 */
 }
 
-.left-image img {
-    width: 480px;
+.left-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ee4d2d; /* 橘色背景 */
+}
+
+.banner-image {
     max-width: 100%;
     height: auto;
+    display: block;
+}
+
+/* 右側登入表單 */
+.login-container {
+    flex: 0 0 360px;
 }
 
 .login-box {
-    width: 360px;
-    padding: 40px 30px;
-    background-color: #fff;
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
-    margin-left: 40px;
+    background-color: #fff; /* 登入框保持白色背景 */
+    padding: 30px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.login-box h2 {
+.login-title {
+    font-size: 20px;
     margin-bottom: 20px;
-    font-size: 24px;
+    color: #333;
 }
 
-.login-box input {
+.input-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.login-input {
     width: 100%;
     padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
     border-radius: 4px;
+    font-size: 14px;
 }
 
-.login-box button[type="submit"] {
+.login-input:invalid {
+    border-color: #ee4d2d;
+}
+
+.login-input::placeholder {
+    color: #ccc;
+}
+
+.error-message {
+    color: #ee4d2d;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+.login-input:invalid + .error-message,
+.login-input:invalid ~ .error-message {
+    display: block;
+}
+
+.password-group {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: url("/placeholder.svg?height=20&width=20");
+    background-size: contain;
+    cursor: pointer;
+}
+
+.login-button {
     width: 100%;
     padding: 12px;
     background-color: #ee4d2d;
@@ -71,32 +163,33 @@ body {
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
+    margin-top: 5px;
 }
 
-.login-box .forgot-link {
-    display: block;
+.forgot-password {
+    text-align: left;
     margin: 10px 0;
+}
+
+.forgot-password a {
+    color: #003366;
     font-size: 14px;
-    text-align: center;
-    color: #555;
-    text-decoration: none;
 }
 
 .divider {
+    position: relative;
     text-align: center;
     margin: 20px 0;
-    color: #999;
-    position: relative;
 }
 
 .divider::before,
 .divider::after {
-    content: '';
+    content: "";
     position: absolute;
-    height: 1px;
-    width: 40%;
-    background: #ccc;
     top: 50%;
+    width: 40%;
+    height: 1px;
+    background-color: #ddd;
 }
 
 .divider::before {
@@ -107,15 +200,25 @@ body {
     right: 0;
 }
 
-.social-login button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
+.divider span {
+    display: inline-block;
+    padding: 0 10px;
+    background-color: #fff;
+    position: relative;
+    color: #999;
     font-size: 14px;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
+}
+
+.social-login {
+    display: flex;
+    flex-direction: row; /* 改為水平排列 */
+    gap: 10px; /* 按鈕之間的間距 */
+    justify-content: center; /* 水平居中 */
+}
+
+.social-button {
+    flex: 1; /* 讓按鈕等寬 */
+    text-align: center;
 }
 
 .facebook {
@@ -126,13 +229,240 @@ body {
     background-color: #db4437;
 }
 
-.register {
+.facebook, .google {
+    background-color: #fff; /* 設定背景為白色 */
+    color: #000; /* 設定文字為黑色 */
+    border: 1px solid #ddd; /* 增加邊框以區分按鈕 */
+    height: 35px; /* 增加按鈕高度 */
+    padding: 0 20px; /* 調整內邊距 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.facebook .social-icon, .google .social-icon {
+    filter: invert(0); /* 確保圖標顏色適配白色背景 */
+}
+
+.social-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-size: contain;
+}
+
+.register-link {
     text-align: center;
-    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.register-link a {
+    color: #ee4d2d;
+    margin-left: 5px;
+}
+
+/* 頁尾樣式 */
+.footer {
+    background-color: #f5f5f5;
+    padding: 40px;
+    font-size: 12px;
+    color: #666;
+}
+
+.footer-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.footer-column {
+    flex: 1;
+}
+
+.footer-title {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a:hover {
+    color: #ee4d2d;
+}
+
+.payment-icons,
+.logistics-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.payment-icon,
+.logistics-icon {
+    width: 40px;
+    height: 25px;
+    background-color: #ddd;
+    border-radius: 4px;
+}
+
+.cert-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #ddd;
+    border-radius: 4px;
+}
+
+.social-links li {
+    margin-bottom: 10px;
+}
+
+.qrcode {
+    width: 100px;
+    height: 100px;
+    background-color: #ddd;
+    margin-bottom: 10px;
+}
+
+.app-download {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.app-link {
+    display: block;
+    width: 120px;
+    height: 35px;
+    background-color: #ddd;
+    border-radius: 4px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.company-info,
+.copyright {
+    margin-bottom: 10px;
+}
+
+.country-list {
+    color: #999;
+}
+
+.country-list span {
+    margin: 0 5px;
+}
+
+/* 購物節內容 */
+.festival-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    margin-right: 40px;
+    max-width: 500px;
+}
+
+.festival-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.festival-logo-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 2px;
+    margin-right: 10px;
+}
+
+.festival-title {
+    font-size: 80px;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+}
+
+.festival-subtitle {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.festival-promos {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.promo-item {
+    padding: 5px 10px;
+    border-radius: 2px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    flex: 1;
+}
+
+.blue {
+    background-color: #0046be;
+}
+
+.green {
+    background-color: #26aa99;
+}
+
+.promo-title {
+    font-size: 12px;
+}
+
+.promo-desc {
     font-size: 14px;
 }
 
-.register a {
-    color: #ee4d2d;
-    text-decoration: none;
+.festival-date {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* 裝飾性心形 */
+.heart {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.heart-1 {
+    width: 100px;
+    height: 100px;
+    top: 50px;
+    left: 100px;
+}
+
+.heart-2 {
+    width: 150px;
+    height: 150px;
+    bottom: 50px;
+    right: 400px;
+}
+
+.heart-3 {
+    width: 80px;
+    height: 80px;
+    top: 150px;
+    right: 500px;
 }
