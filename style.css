@@ -71,7 +71,7 @@ ul {
     align-items: center;
     padding: 40px;
     background-color: #ee4d2d; /* 橘色背景 */
-    height: auto; /* 自動調整高度 */
+    height: auto; /* 自動調整高度以匹配圖片 */
 }
 
 .left-banner {
@@ -231,7 +231,8 @@ ul {
     background-color: #db4437;
 }
 
-.facebook, .google {
+.facebook,
+.google {
     background-color: #fff; /* 設定背景為白色 */
     color: #000; /* 設定文字為黑色 */
     border: 1px solid #ddd; /* 增加邊框以區分按鈕 */
@@ -242,7 +243,8 @@ ul {
     justify-content: center;
 }
 
-.facebook .social-icon, .google .social-icon {
+.facebook .social-icon,
+.google .social-icon {
     filter: invert(0); /* 確保圖標顏色適配白色背景 */
 }
 
@@ -286,6 +288,8 @@ ul {
     font-size: 14px;
     margin-bottom: 15px;
     color: #333;
+    position: relative; /* 添加相對定位 */
+    z-index: 2; /* 確保標題在圖片上方 */
 }
 
 .footer-links li {
@@ -297,26 +301,63 @@ ul {
 }
 
 .payment-icons,
-.logistics-icons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.payment-icon,
-.logistics-icon {
-    width: 40px;
-    height: 25px;
-    background-color: #ddd;
-    border-radius: 4px;
-}
-
+.logistics-icons,
 .cert-icon {
-    width: 50px;
-    height: 50px;
-    background-color: #ddd;
-    border-radius: 4px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative; /* 添加相對定位 */
+}
+
+.payment-icons img,
+.logistics-icons img,
+.cert-icon img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.payment-icons {
+    margin-bottom: 10px; /* 縮短與物流合作的距離 */
+}
+
+/* 調整物流合作標題與圖片的位置關係 */
+.logistics-section {
+    position: relative;
+    margin-top: 30px; /* 增加與付款區塊的間距 */
+    padding-top: 25px; /* 為標題預留空間 */
+}
+
+.logistics-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    margin-bottom: 10px;
+}
+
+.logistics-icons {
+    margin-top: 0; /* 重置之前的負邊距 */
+    margin-left: -25px;
+}
+
+/* 調整圖片大小使其相似 */
+.payment-icons img {
+    width: 180px;
+    height: 100px;
+    margin-top: -45px;
+}
+
+.logistics-icons img {
+    width: 240px;
+    height: 100px;
+}
+
+.cert-icon img {
+    width: 60px;
+    height: 60px;
+    margin-top: -20px;
 }
 
 .social-links li {
@@ -324,10 +365,12 @@ ul {
 }
 
 .qrcode {
-    width: 100px;
+    width: 200px;
     height: 100px;
-    background-color: #ddd;
-    margin-bottom: 10px;
+    background-image: url('img/下載.jpg'); /* 設定背景圖片 */
+    background-size: cover; /* 確保圖片填滿框框 */
+    background-repeat: no-repeat; /* 防止圖片重複 */
+    background-position: center; /* 圖片置中 */
 }
 
 .app-download {
@@ -337,11 +380,8 @@ ul {
 }
 
 .app-link {
-    display: block;
-    width: 120px;
-    height: 35px;
-    background-color: #ddd;
-    border-radius: 4px;
+    background-color: transparent; /* 移除灰色背景 */
+    border-radius: 0; /* 移除圓角 */
 }
 
 .footer-bottom {
@@ -361,110 +401,4 @@ ul {
 
 .country-list span {
     margin: 0 5px;
-}
-
-/* 購物節內容 */
-.festival-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #fff;
-    margin-right: 40px;
-    max-width: 500px;
-}
-
-.festival-logo {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.festival-logo-icon {
-    width: 40px;
-    height: 40px;
-    background-color: #fff;
-    border-radius: 2px;
-    margin-right: 10px;
-}
-
-.festival-title {
-    font-size: 80px;
-    font-weight: bold;
-    line-height: 1;
-    text-align: center;
-}
-
-.festival-subtitle {
-    font-size: 50px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.festival-promos {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    width: 100%;
-}
-
-.promo-item {
-    padding: 5px 10px;
-    border-radius: 2px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
-    flex: 1;
-}
-
-.blue {
-    background-color: #0046be;
-}
-
-.green {
-    background-color: #26aa99;
-}
-
-.promo-title {
-    font-size: 12px;
-}
-
-.promo-desc {
-    font-size: 14px;
-}
-
-.festival-date {
-    font-size: 24px;
-    font-weight: bold;
-    color: #fff;
-}
-
-/* 裝飾性心形 */
-.heart {
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    z-index: 1;
-}
-
-.heart-1 {
-    width: 100px;
-    height: 100px;
-    top: 50px;
-    left: 100px;
-}
-
-.heart-2 {
-    width: 150px;
-    height: 150px;
-    bottom: 50px;
-    right: 400px;
-}
-
-.heart-3 {
-    width: 80px;
-    height: 80px;
-    top: 150px;
-    right: 500px;
 }
